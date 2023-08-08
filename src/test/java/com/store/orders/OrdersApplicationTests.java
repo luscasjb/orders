@@ -25,7 +25,7 @@ class OrdersApplicationTests {
 
 	@Test
 	public void test() throws Exception {
-		URI uri = new URI("/pedidos");
+		URI uri = new URI("/order");
 		String json = "{\"valor\":\"0.00\", \"status\":\"CREATED\"}";
 
 		mockMvc.perform(MockMvcRequestBuilders
@@ -34,6 +34,6 @@ class OrdersApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers
 						.status()
-						.is(400));
+						.is(403));
 	}
 }
