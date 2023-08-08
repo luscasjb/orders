@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.store.orders.enums.StatusOrder;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_order")
+@Table(name = "orders")
 @Getter
 @Setter
 @ToString
@@ -29,11 +30,12 @@ public class OrderModel extends RepresentationModel<OrderModel> implements Seria
 
     @Column(name = "VR_PEDIDO", nullable = false)
     @JsonProperty("valueOrder")
+    @Positive
     private BigDecimal vrOrder;
 
-    @Enumerated(EnumType.STRING)
     @JsonProperty("status")
-    @Column(name = "CD_STATUS", nullable = false)
+    @Column(name = "STATUS", nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusOrder statusOrder;
 
     @Column(name = "DT_CRIACAO")
@@ -44,6 +46,6 @@ public class OrderModel extends RepresentationModel<OrderModel> implements Seria
     @Column(name = "DT_ATUALIZACAO")
     @JsonProperty("updateAt")
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
 }

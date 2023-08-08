@@ -8,7 +8,8 @@ public enum StatusOrder {
     CREATED("created"),
     COMPLETED("completed"),
     INCOMPLETE("incomplete"),
-    ABANDONED("abandoned");
+    ABANDONED("abandoned"),
+    UPDATED("updated");
 
     private String value;
     StatusOrder(String value){
